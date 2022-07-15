@@ -22,7 +22,7 @@ jobs:
         run: |
           env
           echo "----------------------------------------"
-          echo "${github.event.pull_request}"
+          cat ${GITHUB_EVENT_PATH}
   
   run-ci-pipeline:
     uses: daniel-test-bed/Pipeline-security-tests/.github/workflows/base.yml@main
