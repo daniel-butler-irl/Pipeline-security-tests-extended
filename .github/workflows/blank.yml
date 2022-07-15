@@ -4,29 +4,10 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
   pull_request_target:
     branches: [ "main" ]
-  pull_request_review:
-    types: [submitted]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-
+    
 jobs:
-  debug:
-     runs-on: ubuntu-latest
-     steps:
-      - name: print
-        run: |
-          env
-          echo "----------------------------------------"
-          cat ${GITHUB_EVENT_PATH}
-  
   run-ci-pipeline:
     uses: daniel-test-bed/Pipeline-security-tests/.github/workflows/base.yml@main
     secrets: inherit
-    if: (contains(github.event.pull_request.labels.*.name, 'safe') && github.event.review.state == 'approved')
