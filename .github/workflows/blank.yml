@@ -15,6 +15,14 @@ on:
 
 
 jobs:
+  debug:
+     runs-on: ubuntu-latest
+     steps:
+      - name: print
+        run: |
+          echo $(github.event.pull_request)
+  
   run-ci-pipeline:
     uses: daniel-test-bed/Pipeline-security-tests/.github/workflows/base.yml@main
     secrets: inherit
+    if: (contains(github.event.pull_request.labels.*.name, 'safe'))
