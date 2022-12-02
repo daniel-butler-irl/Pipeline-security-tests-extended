@@ -1,0 +1,22 @@
+name: Verify
+
+on:
+ workflow_run:
+    workflows: ["CI"]
+    branches: [main]
+    types:
+      - completed
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      CONCLUSION: github.event.workflow_run.conclusion
+    steps:
+    - shell: bash
+      run: |
+        echo "$CONCLUSION"
+        if [[ "$CONCLUSION" == "success" ]]; then
+          exit 0
+        else
+          exit 1
+        fi
