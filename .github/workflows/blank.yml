@@ -12,3 +12,6 @@ jobs:
   run-ci-pipeline:
     uses: daniel-test-bed/Pipeline-security-tests/.github/workflows/base.yml@main
     secrets: inherit
+    with: 
+      myvalue: "I was passed in!"
+      myOtherVale: "so was I..."
