@@ -14,4 +14,4 @@ jobs:
     secrets: inherit
     with: 
       myvalue: "I was passed in!"
-      myOtherVale: "so was I..."
+      myOtherValue: "so was I..."
